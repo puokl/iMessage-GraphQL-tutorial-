@@ -14,25 +14,19 @@ export default function Home() {
   const { data: session } = useSession();
   console.log("session", session);
 
-  const reloadSession = () => {};
+  const reloadSession = () => {
+    const event = new Event("visibilitychange");
+    document.dispatchEvent(event);
+  };
   return (
     <>
       <Box>
-        {session?.user.id ? (
+        {session?.user.username ? (
           <Chat />
         ) : (
           <Auth session={session} reloadSession={reloadSession} />
         )}
       </Box>
-      {/* <div>
-        {data?.user ? (
-          <button onClick={() => signOut()}>Sign Out</button>
-        ) : (
-          <button onClick={() => signIn("google")}>Sign In</button>
-        )}
-
-        {data?.user?.name}
-      </div> */}
     </>
   );
 }
