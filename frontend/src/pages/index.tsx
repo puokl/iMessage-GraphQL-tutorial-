@@ -1,10 +1,10 @@
 import { Inter } from "next/font/google";
-import { getSession, signIn, signOut, useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { NextPageContext } from "next";
 import { Box } from "@chakra-ui/react";
 import Auth from "@/components/Auth/Auth";
 import Chat from "@/components/Chat/Chat";
-import { Session } from "next-auth";
+
 //  we can explore session object and extend it to add what we want.
 // we create a custom type declaration file "/lib/next-auth.s.ts" name file has to match name of library
 
@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <Box>
         {session?.user.username ? (
-          <Chat />
+          <Chat session={session} />
         ) : (
           <Auth session={session} reloadSession={reloadSession} />
         )}
