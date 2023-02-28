@@ -60,7 +60,7 @@ const Auth: React.FC<AuthProps> = ({ session, reloadSession }) => {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-            <Button width="100%" onClick={onSubmit}>
+            <Button width="100%" onClick={onSubmit} isLoading={loading}>
               Save
             </Button>
           </>
